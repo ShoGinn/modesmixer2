@@ -9,9 +9,6 @@ RUN apt-get update \
 FROM --platform=$TARGETPLATFORM ubuntu:bionic as builder
 
 ARG TARGETARCH
-ARG MODESMIXER2_VERSION=20190223
-ARG MODESMIXER2_ARM_LINK=https://drive.google.com/uc?export=download&id=18DjTxitzZj9RsVPxt7lmnptfL5eZqHxJ
-ARG MODESMIXER2_AMD_LINK=https://drive.google.com/uc?export=download&id=1QzUqYTt-Bf-m817-i3W_RvodB019kxC5
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -23,11 +20,11 @@ RUN apt-get update \
 RUN set -ex; \
 	if [ ${TARGETARCH} = "arm" -o ${TARGETARCH} = "arm64" ]; then \
 		echo "Download armhf version";\
-		curl -SL "${MODESMIXER2_ARM_LINK}" | tar -xzC /usr/local/bin modesmixer2 ; \
+		curl -SL "https://drive.google.com/uc?export=download&id=18DjTxitzZj9RsVPxt7lmnptfL5eZqHxJ" | tar -xzC /usr/local/bin modesmixer2 ; \
 	fi; \
     if [ ${TARGETARCH} = "amd64" ]; then \
 		echo "Download AMD64 version" ; \
-		curl -SL "${MODESMIXER2_AMD_LINK}" | tar -xzC /usr/local/bin modesmixer2 ; \
+		curl -SL "https://drive.google.com/uc?export=download&id=1QzUqYTt-Bf-m817-i3W_RvodB019kxC5" | tar -xzC /usr/local/bin modesmixer2 ; \
 	fi;
 
 FROM base
