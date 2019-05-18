@@ -1,4 +1,4 @@
-FROM debian:jessie-slim AS base
+FROM ubuntu:18.04 AS base
 
 RUN apt-get update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -6,7 +6,7 @@ RUN apt-get update \
 	apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-FROM --platform=$TARGETPLATFORM debian:jessie-slim as builder
+FROM --platform=$TARGETPLATFORM ubuntu:18.04 as builder
 
 ARG TARGETARCH
 
