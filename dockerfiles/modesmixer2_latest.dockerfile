@@ -6,7 +6,7 @@ RUN apt-get update \
 	apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-FROM --platform=$TARGETPLATFORM ubuntu:bionic as builder
+FROM ubuntu:bionic as builder
 
 ARG TARGETARCH
 
