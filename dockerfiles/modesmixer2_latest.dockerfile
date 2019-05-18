@@ -1,12 +1,12 @@
-FROM ubuntu:bionic AS base
+FROM debian:jessie-slim AS base
 
 RUN apt-get update \
-	&& apt-get install -y --no-install-recommends \
-	libssl1.0.0 && \
+	&& DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+	openssl && \
 	apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-FROM ubuntu:bionic as builder
+FROM --platform=$TARGETPLATFORM debian:jessie-slim as builder
 
 ARG TARGETARCH
 
