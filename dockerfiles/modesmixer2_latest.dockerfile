@@ -10,8 +10,8 @@ FROM --platform=$TARGETPLATFORM ubuntu:bionic as builder
 
 ARG TARGETARCH
 ARG MODESMIXER2_VERSION=20190223
-ARG MODESMIXER2_ARM_LINK="https://drive.google.com/uc?export=download&id=18DjTxitzZj9RsVPxt7lmnptfL5eZqHxJ"
-ARG MODESMIXER2_AMD_LINK="https://drive.google.com/uc?export=download&id=1QzUqYTt-Bf-m817-i3W_RvodB019kxC5"
+ARG MODESMIXER2_ARM_LINK=https://drive.google.com/uc?export=download&id=18DjTxitzZj9RsVPxt7lmnptfL5eZqHxJ
+ARG MODESMIXER2_AMD_LINK=https://drive.google.com/uc?export=download&id=1QzUqYTt-Bf-m817-i3W_RvodB019kxC5
 
 ENV DEBIAN_FRONTEND=noninteractive
 
