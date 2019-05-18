@@ -2,6 +2,8 @@ FROM ubuntu:18.04 AS base
 
 RUN apt-get update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+	netbase \
+	sqlite3 \
 	openssl && \
 	apt-get clean && \
     rm -rf /var/lib/apt/lists/*
