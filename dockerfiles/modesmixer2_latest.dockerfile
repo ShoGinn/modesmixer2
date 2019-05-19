@@ -31,8 +31,10 @@ RUN set -ex; \
 
 FROM base
 
+COPY rootfs /
+
 COPY --from=builder /usr/local/bin/modesmixer2 /usr/local/bin/modesmixer2
 
 EXPOSE 8080/tcp
 
-ENTRYPOINT ["/usr/local/bin/modesmixer2","--web","8080"]
+ENTRYPOINT ["/usr/local/bin/docker_entrypoint.sh"]
