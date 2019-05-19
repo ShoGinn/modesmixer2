@@ -13,9 +13,10 @@ ARGUMENTS=""
 if [ -z "${INCONNECTS}" ]; then
 	echo "Using default feeders - dump1090"
 	INCONNECTS="${DUMP1090_HOST:-dump1090}:${DUMP1090_PORT:-30005}:DUMP1090"
-	ARGUMENTS="--inConnectID ${INCONNECTS}"
+	ARGUMENTS="--inConnectId ${INCONNECTS}"
 else
-	ARGUMENTS="--inConnectID ${INCONNECTS}"
+	INCONNECTS=$(sed 's/;/ --inConnectId /g' <<< $INCONNECTS)
+	ARGUMENTS="--inConnectId ${INCONNECTS}"
 fi
 
 if [ -z "${DUMP1090_LAT}" ] || [ -z "${DUMP1090_LON}" ]; then
