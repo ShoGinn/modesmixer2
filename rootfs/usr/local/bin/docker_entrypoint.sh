@@ -6,7 +6,6 @@ set -o errexit          # Exit on most errors (see the manual)
 #set -o pipefail         # Use last non-zero exit code in a pipeline
 #set -o xtrace          # Trace the execution of the script (debug)
 
-
 echo "Waiting for dump1090 to start up"
 sleep 5s
 ARGUMENTS=""
@@ -15,7 +14,7 @@ if [ -z "${INCONNECTS}" ]; then
 	INCONNECTS="${DUMP1090_HOST:-dump1090}:${DUMP1090_PORT:-30005}:DUMP1090"
 	ARGUMENTS="--inConnectId ${INCONNECTS}"
 else
-	INCONNECTS=$(sed 's/;/ --inConnectId /g' <<< $INCONNECTS)
+	INCONNECTS=$(echo $INCONNECTS | sed 's/;/ --inConnectId /g')
 	ARGUMENTS="--inConnectId ${INCONNECTS}"
 fi
 
@@ -31,7 +30,7 @@ if [ -z "${GOOGLE_API}" ]; then
 else
 	ARGUMENTS="${ARGUMENTS} --google-key ${GOOGLE_API}"
 fi
-
+echo "Setting up Modes Mixer with the following arguments: ${ARGUMENTS}"
 exec /usr/local/bin/modesmixer2 \
   --web 8080 \
   ${ARGUMENTS} \
