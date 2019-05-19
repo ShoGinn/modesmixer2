@@ -9,7 +9,7 @@ set -o nounset          # Disallow expansion of unset variables
 
 echo "Waiting for dump1090 to start up"
 sleep 5s
-
+ARGUMENTS=""
 if [ -z "${INCONNECTS:-""}" ]; then
 	echo "Using default feeders - dump1090"
 	INCONNECTS="${DUMP1090_HOST:-dump1090}:${DUMP1090_PORT:-30005}:DUMP1090"
