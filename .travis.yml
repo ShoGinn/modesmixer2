@@ -13,6 +13,7 @@ services:
 
 env:
   global:
+    - ARCHITECTURES='linux/amd64,linux/arm64,linux/arm/v7'}
     - BUILD_DATE="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
     - BUILD_NUMBER="${TRAVIS_BUILD_NUMBER}"
     - DOCKER_DESCRIPTION="Docker container for ADS-B - This is a web-ui with modesmixer2"
