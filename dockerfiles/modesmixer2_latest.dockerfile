@@ -20,11 +20,10 @@ RUN apt-get update \
 	ca-certificates
 
 RUN set -ex; \
-	if [ ${TARGETARCH} = "arm" -o ${TARGETARCH} = "arm64" ]; then \
+	if [ ${TARGETARCH} != "linux/amd64" ]; then \
 		echo "Download armhf version";\
 		curl -SL "https://drive.google.com/uc?export=download&id=18DjTxitzZj9RsVPxt7lmnptfL5eZqHxJ" | tar -xzC /usr/local/bin modesmixer2 ; \
-	fi; \
-    if [ ${TARGETARCH} = "amd64" ]; then \
+	else \
 		echo "Download AMD64 version" ; \
 		curl -SL "https://drive.google.com/uc?export=download&id=1QzUqYTt-Bf-m817-i3W_RvodB019kxC5" | tar -xzC /usr/local/bin modesmixer2 ; \
 	fi;
