@@ -1,0 +1,3 @@
+ARCHITECTURES='linux/amd64,linux/arm64,linux/arm/v7'}
+DOCKER_DESCRIPTION="Docker container for ADS-B - This is a web-ui with modesmixer2"
+DOCKER_NAME="modesmixer2"
